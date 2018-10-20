@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Xsuler</title>
+  <title>Iyov Su&#39;s Blog</title>
   
   
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>xsuler.github.io/</id>
   
   <author>
-    <name>Le Su</name>
+    <name>Iyov Su</name>
     
   </author>
   
@@ -18,12 +18,10 @@
   
   <entry>
     <title>Initialize</title>
-    <link href="xsuler.github.io/2018/10/13/Initialize/"/>
-    <id>xsuler.github.io/2018/10/13/Initialize/</id>
-    <published>2018-10-13T07:29:09.000Z</published>
+    <link href="xsuler.github.io/2018/10/12/Initialize/"/>
+    <id>xsuler.github.io/2018/10/12/Initialize/</id>
+    <published>2018-10-12T19:29:09.000Z</published>
     <updated>2018-10-20T15:49:01.832Z</updated>
-    
-    <content type="html"><![CDATA[<p>Every blog has to start somewhere.<br>Every thing starts from nothing. </p>]]></content>
     
     <summary type="html">
     
