@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xsuler</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="xsuler.github.io/"/>
+  <updated>2018-10-13T07:35:45.815Z</updated>
+  <id>xsuler.github.io/</id>
+  
+  <author>
+    <name>Le Su</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Initialize</title>
+    <link href="xsuler.github.io/2018/10/13/Initialize/"/>
+    <id>xsuler.github.io/2018/10/13/Initialize/</id>
+    <published>2018-10-13T07:29:09.000Z</published>
+    <updated>2018-10-13T07:35:45.815Z</updated>
+    
+    <content type="html"><![CDATA[<p>Every blog has to start somewhere.<br>Every thing starts from nothing. </p><p><img src="/2018/10/13/Initialize/Groxpicture.png" title="}</p>"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Every blog has to start somewhere.&lt;br&gt;Every thing starts from nothing. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2018/10/13/Initialize/Groxpicture.png&quot; title=&quot;}
+      
+    
+    </summary>
+    
+    
+      <category term="Nothing" scheme="xsuler.github.io/tags/Nothing/"/>
+    
+  </entry>
+  
+</feed>
