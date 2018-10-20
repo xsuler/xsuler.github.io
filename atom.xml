@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="xsuler.github.io/"/>
+  <link href="/"/>
   <updated>2018-10-20T15:49:01.832Z</updated>
-  <id>xsuler.github.io/</id>
+  <id>/</id>
   
   <author>
     <name>Iyov Su</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Initialize</title>
-    <link href="xsuler.github.io/2018/10/12/Initialize/"/>
-    <id>xsuler.github.io/2018/10/12/Initialize/</id>
+    <link href="/2018/10/12/Initialize/"/>
+    <id>/2018/10/12/Initialize/</id>
     <published>2018-10-12T19:29:09.000Z</published>
     <updated>2018-10-20T15:49:01.832Z</updated>
     
@@ -34,7 +34,7 @@
     </summary>
     
     
-      <category term="Nothing" scheme="xsuler.github.io/tags/Nothing/"/>
+      <category term="Nothing" scheme="/tags/Nothing/"/>
     
   </entry>
   
