@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-10-21T04:00:20.177Z</updated>
+  <updated>2018-10-21T07:54:35.605Z</updated>
   <id>/</id>
   
   <author>
@@ -17,15 +17,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>django-upload-image</title>
+    <title>Upload Image in Django</title>
     <link href="/2018/10/17/django-upload-image/"/>
     <id>/2018/10/17/django-upload-image/</id>
     <published>2018-10-17T15:23:16.000Z</published>
-    <updated>2018-10-21T04:00:20.177Z</updated>
+    <updated>2018-10-21T07:54:35.605Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Upload-Image-in-Django&quot;&gt;&lt;a href=&quot;#Upload-Image-in-Django&quot; class=&quot;headerlink&quot; title=&quot;Upload Image in Django&quot;&gt;&lt;/a&gt;Upload Image in Django&lt;/h1&gt;&lt;p&gt;Using ImageField. To properly use it, you should store the image file in static folder, and record the path in database.&lt;br&gt;
+      &lt;p&gt;This post shows how to use ImageField to upload imasge in django.&lt;br&gt;
     
     </summary>
     

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>django-upload-image | Iyov Su&#39;s Blog</title>
+  <title>Upload Image in Django | Iyov Su&#39;s Blog</title>
   <meta name="description" content="" />
   <meta name="keywords" content="blog,Iyov Su,Computer Science,Software Engeneering" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="alternate" href="/atom.xml" title="Iyov Su's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Upload Image in DjangoUsing ImageField. To properly use it, you should store the image file in static folder, and record the path in database.">
+  <meta name="description" content="This post shows how to use ImageField to upload imasge in django.">
 <meta name="keywords" content="web,django,python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="django-upload-image">
+<meta property="og:title" content="Upload Image in Django">
 <meta property="og:url" content="/2018/10/17/django-upload-image/index.html">
 <meta property="og:site_name" content="Iyov Su&#39;s Blog">
-<meta property="og:description" content="Upload Image in DjangoUsing ImageField. To properly use it, you should store the image file in static folder, and record the path in database.">
+<meta property="og:description" content="This post shows how to use ImageField to upload imasge in django.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-21T04:00:20.177Z">
+<meta property="og:updated_time" content="2018-10-21T07:54:35.605Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="django-upload-image">
-<meta name="twitter:description" content="Upload Image in DjangoUsing ImageField. To properly use it, you should store the image file in static folder, and record the path in database.">
+<meta name="twitter:title" content="Upload Image in Django">
+<meta name="twitter:description" content="This post shows how to use ImageField to upload imasge in django.">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -130,7 +130,7 @@
 	<section class='meta'>
 	<h2 class="title">
   	<a href="/2018/10/17/django-upload-image/">
-    	django-upload-image
+    	Upload Image in Django
     </a>
   </h2>
 	<time>
@@ -139,11 +139,11 @@
 	
 	</section>
 	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Upload-Image-in-Django"><span class="toc-number">1.</span> <span class="toc-text">Upload Image in Django</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#model"><span class="toc-number">1.1.</span> <span class="toc-text">model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#view"><span class="toc-number">1.2.</span> <span class="toc-text">view</span></a></li></ol></li></ol></section>
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#model"><span class="toc-number">1.</span> <span class="toc-text">model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#view"><span class="toc-number">2.</span> <span class="toc-text">view</span></a></li></ol></section>
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<h1 id="Upload-Image-in-Django"><a href="#Upload-Image-in-Django" class="headerlink" title="Upload Image in Django"></a>Upload Image in Django</h1><p>Using ImageField. To properly use it, you should store the image file in static folder, and record the path in database.<br><a id="more"></a></p>
+    	<p>This post shows how to use ImageField to upload imasge in django.<br><a id="more"></a><br>To properly use it, you should store the image file in static folder, and record the path in database.</p>
 <h2 id="model"><a href="#model" class="headerlink" title="model"></a>model</h2><p>The code below will modify the upload path and change the file name to a random string.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_upload</span><span class="params">(instance, name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> os.path.join(<span class="string">'static/image/'</span>, uuid.uuid1().hex+<span class="string">'.'</span>+name.split(<span class="string">'.'</span>)[<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageUploader</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    image = models.ImageField(upload_to = on_upload)</span><br></pre></td></tr></table></figure>
 <h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><p>let’s use django class view. First create a instance of the model, then save the image to disk. The view will return the proper path where static folder is served under <code>/</code>.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageUpload</span><span class="params">(ViewClass)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self)</span>:</span></span><br><span class="line">        img = ImageUploader.objects.create(image=self.request.POST[<span class="string">'image'</span>])</span><br><span class="line">        img.save()</span><br><span class="line">        <span class="keyword">return</span> settings.get_url()+img.image.url[<span class="number">7</span>:]</span><br></pre></td></tr></table></figure></p>
@@ -176,7 +176,7 @@
 </article>
 <script>
 	window.subData = {
-		title: 'django-upload-image',
+		title: 'Upload Image in Django',
 		tools: true
 	}
 </script>
