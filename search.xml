@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>django-upload-image</title>
+      <link href="/2018/10/17/django-upload-image/"/>
+      <url>/2018/10/17/django-upload-image/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Upload-Image-in-Django"><a href="#Upload-Image-in-Django" class="headerlink" title="Upload Image in Django"></a>Upload Image in Django</h1><p>Using ImageField. To properly use it, you should store the image file in static folder, and record the path in database.<br><a id="more"></a></p><h2 id="model"><a href="#model" class="headerlink" title="model"></a>model</h2><p>The code below will modify the upload path and change the file name to a random string.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_upload</span><span class="params">(instance, name)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> os.path.join(<span class="string">'static/image/'</span>, uuid.uuid1().hex+<span class="string">'.'</span>+name.split(<span class="string">'.'</span>)[<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageUploader</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    image = models.ImageField(upload_to = on_upload)</span><br></pre></td></tr></table></figure><h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><p>let’s use django class view. First create a instance of the model, then save the image to disk. The view will return the proper path where static folder is served under <code>/</code>.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageUpload</span><span class="params">(ViewClass)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self)</span>:</span></span><br><span class="line">        img = ImageUploader.objects.create(image=self.request.POST[<span class="string">'image'</span>])</span><br><span class="line">        img.save()</span><br><span class="line">        <span class="keyword">return</span> settings.get_url()+img.image.url[<span class="number">7</span>:]</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> django </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Initialize</title>
       <link href="/2018/10/12/Initialize/"/>
       <url>/2018/10/12/Initialize/</url>
