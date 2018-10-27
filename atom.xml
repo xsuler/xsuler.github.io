@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-10-27T09:16:08.178Z</updated>
+  <updated>2018-10-27T10:32:34.011Z</updated>
   <id>/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="/2018/10/26/IEC62443-1-1/"/>
     <id>/2018/10/26/IEC62443-1-1/</id>
     <published>2018-10-26T21:08:45.000Z</published>
-    <updated>2018-10-27T09:16:08.178Z</updated>
+    <updated>2018-10-27T10:32:34.011Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;IEC62443-1-1: 中华人民共和国机械行业标准，工业通信网络，网络和系统安全，术语，概念和模型部分。&lt;br&gt;以下是对IEC62443-1-1内容的整理&lt;br&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot;&gt;&lt;div class=&quot;.article-gallery&quot; &lt;p=&quot;&quot;&gt;IEC62443-1-1: 中华人民共和国机械行业标准，工业通信网络，网络和系统安全，术语，概念和模型部分。&lt;br&gt;以下是对IEC62443-1-1内容的整理&lt;br&gt;
     
     </summary>
     
@@ -45,7 +45,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;This post shows how to use ImageField to upload imasge in django.&lt;br&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot;&gt;&lt;div class=&quot;.article-gallery&quot; &lt;p=&quot;&quot;&gt;This post shows how to use ImageField to upload imasge in django.&lt;br&gt;
     
     </summary>
     
@@ -69,8 +69,7 @@
     
       
       
-        &lt;p&gt;Every blog has to start somewhere.&lt;br&gt;Every thing starts from nothing. &lt;/p&gt;
-
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot;&gt;&lt;div class=&quot;.article-g
       
     
     </summary>
