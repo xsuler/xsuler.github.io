@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-10-21T07:54:35.605Z</updated>
+  <updated>2018-10-27T09:16:08.178Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IEC62443-1-1标准解读</title>
+    <link href="/2018/10/26/IEC62443-1-1/"/>
+    <id>/2018/10/26/IEC62443-1-1/</id>
+    <published>2018-10-26T21:08:45.000Z</published>
+    <updated>2018-10-27T09:16:08.178Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;IEC62443-1-1: 中华人民共和国机械行业标准，工业通信网络，网络和系统安全，术语，概念和模型部分。&lt;br&gt;以下是对IEC62443-1-1内容的整理&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="工业通信网络" scheme="/tags/%E5%B7%A5%E4%B8%9A%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="标准解读" scheme="/tags/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>Upload Image in Django</title>
