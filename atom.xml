@@ -37,28 +37,6 @@
   </entry>
   
   <entry>
-    <title>Upload Image in Django</title>
-    <link href="/2018/10/17/django-upload-image/"/>
-    <id>/2018/10/17/django-upload-image/</id>
-    <published>2018-10-17T15:23:16.000Z</published>
-    <updated>2018-10-21T07:54:35.605Z</updated>
-    
-    <summary type="html">
-    
-      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot;&gt;&lt;div class=&quot;.article-gallery&quot; &lt;p=&quot;&quot;&gt;This post shows how to use ImageField to upload imasge in django.&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="web" scheme="/tags/web/"/>
-    
-      <category term="django" scheme="/tags/django/"/>
-    
-      <category term="python" scheme="/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Initialize</title>
     <link href="/2018/10/12/Initialize/"/>
     <id>/2018/10/12/Initialize/</id>
