@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-11-03T05:24:44.398Z</updated>
+  <updated>2018-11-03T05:32:37.057Z</updated>
   <id>/</id>
   
   <author>
@@ -21,18 +21,20 @@
     <link href="/2018/10/26/IEC62443-1-1/"/>
     <id>/2018/10/26/IEC62443-1-1/</id>
     <published>2018-10-26T21:08:45.000Z</published>
-    <updated>2018-11-03T05:24:44.398Z</updated>
+    <updated>2018-11-03T05:32:37.057Z</updated>
     
     <summary type="html">
     
-      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot;&gt;&lt;div class=&quot;.article-gallery&quot; &lt;p=&quot;&quot;&gt;IEC62443-1-1: 中华人民共和国机械行业标准，工业通信网络，网络和系统安全，术语，概念和模型部分。&lt;br&gt;以下是对IEC62443-1-1内容的整理。&lt;br&gt;
+      &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot;&gt;&lt;div class=&quot;.article-gallery&quot; &lt;p=&quot;&quot;&gt;IEC62443-1-1: Industrial communication networks - Network and system security - Part 1-1: Terminology, concepts and models&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;IEC62443-1-1: 工业通信网络 - 网络和系统安全 - Part 1-1: 术语，概念和模型。&lt;/p&gt;
+&lt;p&gt;以下是对IEC62443-1-1内容的整理。&lt;br&gt;
     
     </summary>
     
     
       <category term="工业通信网络" scheme="/tags/%E5%B7%A5%E4%B8%9A%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C/"/>
     
-      <category term="标准解读" scheme="/tags/%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/"/>
+      <category term="IEC62443" scheme="/tags/IEC62443/"/>
     
   </entry>
   

@@ -7,7 +7,7 @@
       <link href="/2018/10/26/IEC62443-1-1/"/>
       <url>/2018/10/26/IEC62443-1-1/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">IEC62443-1-1: 中华人民共和国机械行业标准，工业通信网络，网络和系统安全，术语，概念和模型部分。<br>以下是对IEC62443-1-1内容的整理。<br><a id="more"></a><p></p><iframe name="myifm" src="https://www.xmind.net/embed/zQnm" runat="server" width="90%" height="540px" style="background-repeat: no-repeat;background-position: center;webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;background-image:url(/images/loading.jpeg)" frameborder="0" scrolling="no"><br></iframe></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">IEC62443-1-1: Industrial communication networks - Network and system security - Part 1-1: Terminology, concepts and models<p></p><p>IEC62443-1-1: 工业通信网络 - 网络和系统安全 - Part 1-1: 术语，概念和模型。</p><p>以下是对IEC62443-1-1内容的整理。<br><a id="more"></a></p><iframe name="myifm" src="https://www.xmind.net/embed/zQnm" runat="server" width="90%" height="540px" style="background-repeat: no-repeat;background-position: center;webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;background-image:url(/images/loading.jpeg)" frameborder="0" scrolling="no"><br></iframe></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
       
       
       
@@ -15,7 +15,7 @@
             
             <tag> 工业通信网络 </tag>
             
-            <tag> 标准解读 </tag>
+            <tag> IEC62443 </tag>
             
         </tags>
       
