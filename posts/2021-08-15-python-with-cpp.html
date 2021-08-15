@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>eon's Blog - Python and Cpp, GIL and other stuff</title>
+        <link rel="stylesheet" href="../css/list.css" />
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/zenburn.css" />
+        <link rel="stylesheet" href="../css/table.css" />
+    </head>
+    <body>
+      <input type="checkbox" id="check" /><label for="check"><svg viewBox="0 0 30 30" width="30" height="30">
+        <path id="one" d="M4 10h22M4" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
+        <path id="two" d="M4 20h22M4" stroke="#fff" stroke-width="2" stroke-linecap="round"></path>
+    </svg> Menu</label>
+<aside>
+      <div id="ani">
+        <ul>
+          <li><a data-text="Home" href="../">Home</a></li>
+          <li><a data-text="Archive" href="../archive.html">Archive</a></li>
+          <li><a data-text="Contact" href="../contact.html">Contact</a></li>
+          <li><a data-text="About" href="../about.html">About</a></li>
+        </ul>
+        </div>
+</aside>
+<article>
+    <div class="wrapper" id="style-1">
+        <div class="content" id="container">
+            <section class="header">
+  <h1 style="font-size: 3em">Python and Cpp, GIL and other stuff</h1>
+  <p style="margin-left: 80%">Posted on August 15, 2021
+  
+      by Eon
+      </p>
+</section>
+<br>
+<br>
+<br>
+<hr>
+<section>
+  <h1 id="what-is-python-c-api">what is python c-api</h1>
+<blockquote>
+<p>API used by C and C++ programmers who want to write extension modules or embed Python</p>
+</blockquote>
+<hr />
+<h1 id="what-is-py_initialize">what is Py_Initialize</h1>
+<p>a python c-api, not a boost api,</p>
+<blockquote>
+<p>Initialize the Python interpreter. In an application embedding Python, this should be called before using any other Python/C API functions; see Before Python Initialization for the few exceptions. This initializes the table of loaded modules (sys.modules), and creates the fundamental modules builtins, <strong>main</strong> and sys. It also initializes the module search path (sys.path). It does not set sys.argv; use PySys_SetArgvEx() for that. This is a no-op when called for a second time (without calling Py_FinalizeEx() first). There is no return value; it is a fatal error if the initialization fails.</p>
+</blockquote>
+<hr />
+<h1 id="what-is-scoped_interpreter">what is scoped_interpreter</h1>
+<ul>
+<li>initialize_interpreter:</li>
+</ul>
+<blockquote>
+<p>Initialize the Python interpreter. No other pybind11 or CPython API functions can be called before this is done; with the exception of PYBIND11_EMBEDDED_MODULE. The optional parameter can be used to skip the registration of signal handlers (see the Python documentation for details). Calling this function again after the interpreter has already been initialized is a fatal error.</p>
+</blockquote>
+<ul>
+<li>finalize_interpreter:</li>
+</ul>
+<blockquote>
+<p>Shut down the Python interpreter. No pybind11 or CPython API functions can be called after this. In addition, pybind11 objects must not outlive the interpreter:</p>
+</blockquote>
+<ul>
+<li>scoped_interpreter:</li>
+</ul>
+<blockquote>
+<p>Scope guard version of initialize_interpreter() and finalize_interpreter(). This a move-only guard and only a single instance can exist.</p>
+</blockquote>
+<hr />
+<h1 id="what-the-difference-between-py_initialize-and-scoped_interpreter-can-we-switch-between-them">what the difference between Py_Initialize and scoped_interpreter, can we switch between them</h1>
+<ul>
+<li>if we call Py_Initialize twice, the second call will do nothing</li>
+<li>if we cann scoped_interpreter twice, program will crash</li>
+<li>yes we can switch between them, we can demostrate this</li>
+</ul>
+<hr />
+<h1 id="when-to-use-py_initialize-or-scoped_interpreter">when to use Py_Initialize or scoped_interpreter</h1>
+<ul>
+<li>we only need to use them in embed python when no python interpreter is started</li>
+<li>we don’t need and shouldn’t use them in python call c++ case</li>
+</ul>
+<hr />
+<h1 id="what-if-we-use-py_initialize-or-scoped_interpreter-in-python-call-c-condition">what if we use Py_Initialize or scoped_interpreter in python call c++ condition</h1>
+<ul>
+<li>Py_Initialize is ok because it will do nothing</li>
+<li>scoped_interpreter will crash</li>
+</ul>
+<hr />
+<h1 id="what-is-gil">what is GIL</h1>
+<ul>
+<li>Global Interpreter Lock</li>
+</ul>
+<blockquote>
+<p>In python, you can only execute one thread at a time as it has GIL.</p>
+</blockquote>
+<blockquote>
+<p>Python has a “reference-counter” for memory management, without gil, reference-counter will be broken in race condition</p>
+</blockquote>
+<hr />
+<h1 id="how-to-manage-gil-in-boost-py">how to manage GIL in boost py?</h1>
+<p>by calling python api:</p>
+<ul>
+<li>PyEval_SaveThread</li>
+</ul>
+<blockquote>
+<p>Release the global interpreter lock (if it has been created) and reset the thread state to NULL, returning the previous thread state (which is not NULL). If the lock has been created, the current thread must have acquired it.</p>
+</blockquote>
+<ul>
+<li>PyEval_RestoreThread</li>
+</ul>
+<blockquote>
+<p>Acquire the global interpreter lock (if it has been created) and set the thread state to tstate, which must not be NULL. If the lock has been created, the current thread must not have acquired it, otherwise deadlock ensues.</p>
+</blockquote>
+<ul>
+<li>PyGILState_Ensure</li>
+</ul>
+<blockquote>
+<p>Ensure that the current thread is ready to call the Python C API regardless of the current state of Python, or of the global interpreter lock</p>
+</blockquote>
+<ul>
+<li>PyGILState_Release</li>
+</ul>
+<blockquote>
+<p>Release any resources previously acquired</p>
+</blockquote>
+<p>when threads are created from C, they don’t have the global interpreter lock, nor is there a thread state data structure for them. Such threads must bootstrap themselves into existence, by first creating a thread state data structure, then acquiring the lock, and finally storing their thread state pointer, before they can start using the Python/C API.</p>
+<p>so when we switch from cpp to python, we need ensure/release pair, when we switch from python to cpp, we need save/restore pair</p>
+<hr />
+<h1 id="better-way-to-manage-gil-in-boost-py">better way to manage GIL in boost py?</h1>
+<p>with gil and without gil, we can demostrate this</p>
+<hr />
+<h1 id="what-the-difference-if-we-dont-manage-gil">what the difference if we don’t manage GIL?</h1>
+<p>slower in multi-thread python program, we can domostrate this</p>
+<hr />
+<h1 id="what-will-happen-if-we-get-confused-and-mix-things-up">what will happen if we get confused and mix things up?</h1>
+<p>our boostpy example crash, we cannot call python without gil</p>
+<hr />
+<h1 id="how-to-manage-gil-in-pybind11-what-is-the-difference-between-pybind11-style-and-boostpy-style">how to manage GIL in pybind11? what is the difference between pybind11 style and boostpy style</h1>
+<p>py::gil_scoped_release and py::gil_scoped_acquire, actually without_gil and with_gil</p>
+<hr />
+<h1 id="can-we-use-boost-py-style-in-pybind11-to-manage-gil">can we use boost py style in pybind11 to manage GIL?</h1>
+<p>yes, we can demostrate this, vice versa</p>
+</section>
+
+        </div>
+        <div class="footer">
+            <p>Contact Me:  <a href="mail://aeonsule@163.com" target="_blank" title>Email</a></p>
+        </div>
+    </div>
+</article>
+        </main>
+    </body>
+</html>
