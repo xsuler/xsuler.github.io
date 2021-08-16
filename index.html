@@ -176,14 +176,14 @@
       });
     }
     function getColor(d) {
-      return d > 1000 ? '#0377a3' :
-             d > 500  ? '#049ad4' :
-             d > 200  ? '#18b4f0' :
-             d > 100  ? '#3cb7e6' :
-             d > 50   ? '#63c2e6' :
-             d > 20   ? '#78c6e3' :
-             d > 10   ? '#96cee3' :
-                        '#cce6f0' ;
+      return d > 1000 ? '#003E3E' :
+             d > 500  ? '#005757' :
+             d > 200  ? '#007979' :
+             d > 100  ? '#00AEAE' :
+             d > 50   ? '#00E3E3' :
+             d > 20   ? '#4DFFFF' :
+             d > 10   ? '#BBFFFF' :
+                        '#FDFFFF' ;
     }
 
     geojson = new L.GeoJSON.AJAX(myGeoJSONPath, {
