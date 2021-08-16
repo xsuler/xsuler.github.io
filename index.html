@@ -19,6 +19,27 @@
         <link rel="stylesheet" href="./css/zenburn.css" />
         <link rel="stylesheet" href="./css/table.css" />
         <link rel="stylesheet" href="./css/leaflet.css" />
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+        <script>
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          var firebaseConfig = {
+            apiKey: "AIzaSyBBamPF_3XjY4PlawRvdjvxyGcpdqTfufs",
+            authDomain: "eonblog-4e2bd.firebaseapp.com",
+            projectId: "eonblog-4e2bd",
+            storageBucket: "eonblog-4e2bd.appspot.com",
+            messagingSenderId: "209264863264",
+            appId: "1:209264863264:web:c937e2059d336024533445",
+            measurementId: "G-D90DX8ZCG0",
+            databaseURL: "https://eonblog-4e2bd-default-rtdb.asia-southeast1.firebasedatabase.app",
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+        </script>
+
 
 
         <style type="text/css">
@@ -106,6 +127,7 @@
 
 <script src="./js/leaflet.js"></script>
 <script src="./js/leaflet.ajax.min.js"></script>
+<script src="./js/database.js"></script>
 
 <script>
     var myGeoJSONPath = '/js/global.geo.json';
@@ -123,11 +145,15 @@
       };
     }
 
+    function updateCurrentCountry(){
+      fetch('https://api.ipdata.co?api-key=33118afc00bdc704d733237f3addded04e1f913b23d173dff9fc7430')
+        .then((resp)=>{return resp.json()})
+        .then((data)=> updateVisitorData(data.country_code))
+    }
+
     function getDensity(name){
-        if (name.toUpperCase() == "CHINA") {
-            return 20
-        }
-        return 0
+      name = getCountryCode(name)
+      return getCount(name)
     }
 
     function highlightFeature(e) {
@@ -167,7 +193,7 @@
              d > 50   ? '#63c2e6' :
              d > 20   ? '#78c6e3' :
              d > 10   ? '#96cee3' :
-                        '#cce6f0';
+                        '#cce6f0' ;
     }
 
     geojson = new L.GeoJSON.AJAX(myGeoJSONPath, {
@@ -214,7 +240,7 @@
         return div;
     };
 
-
+    updateCurrentCountry()
     legend.addTo(map);
 
 </script>
@@ -227,5 +253,7 @@
     </div>
 </article>
         </main>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+
     </body>
 </html>
