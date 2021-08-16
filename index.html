@@ -52,6 +52,9 @@
 
 <p>Welcome to Eon's blog!</p>
 
+<p>This is my personal blog, my posts:</p>
+<h2>Posts</h2>
+
 <div id="tag-cloud-canvas">
  <canvas width="300" height="300" id="myCanvas">
   <p>In Internet Explorer versions up to 8, things inside the canvas are inaccessible!</p>
@@ -73,9 +76,7 @@
   
  </ul>
 </div>
-<p>This is my personal blog, my posts:</p>
 
-<h2>Posts</h2>
 <ul>
     
         <li>
@@ -83,7 +84,6 @@
         </li>
     
 </ul>
-
 
 <p>…or you can find more in the <a href="./archive.html">archives</a>.</p>
 
@@ -99,6 +99,9 @@
   };
 </script>
 
+<h2>Visitors</h2>
+<p>you can view the visitor density of my blog here: </p>
+
 <div id="map" style="width: 600px; height: 400px"></div>
 
 <script src="./js/leaflet.js"></script>
@@ -111,12 +114,20 @@
     map.setView(new L.LatLng(40.737, -3.923), 1);
     function style(feature) {
       return {
+          fillColor: getColor(getDensity(feature.properties.name)),
           weight: 2,
           opacity: 1,
           color: 'white',
           dashArray: '3',
           fillOpacity: 0.7
       };
+    }
+
+    function getDensity(name){
+        if (name.toUpperCase() == "CHINA") {
+            return 20
+        }
+        return 0
     }
 
     function highlightFeature(e) {
@@ -149,14 +160,14 @@
       });
     }
     function getColor(d) {
-      return d > 1000 ? '#800026' :
-             d > 500  ? '#BD0026' :
-             d > 200  ? '#E31A1C' :
-             d > 100  ? '#FC4E2A' :
-             d > 50   ? '#FD8D3C' :
-             d > 20   ? '#FEB24C' :
-             d > 10   ? '#FED976' :
-                        '#FFEDA0';
+      return d > 1000 ? '#0377a3' :
+             d > 500  ? '#049ad4' :
+             d > 200  ? '#18b4f0' :
+             d > 100  ? '#3cb7e6' :
+             d > 50   ? '#63c2e6' :
+             d > 20   ? '#78c6e3' :
+             d > 10   ? '#96cee3' :
+                        '#cce6f0';
     }
 
     geojson = new L.GeoJSON.AJAX(myGeoJSONPath, {
@@ -179,7 +190,7 @@
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
         this._div.innerHTML = '<h4>Web visitor worldwide density</h4>' +  (props ?
-            '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
+            '<b>' + props.name + '</b><br />' + getDensity(props.name) + ' people / mi<sup>2</sup>'
             : 'Hover over a country');
     };
 
