@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./css/default.css" />
         <link rel="stylesheet" href="./css/zenburn.css" />
         <link rel="stylesheet" href="./css/table.css" />
+        <script src="./js/tagcanvas.min.js"></script>
     </head>
     <body>
       <input type="checkbox" id="check" /><label for="check"><svg viewBox="0 0 30 30" width="30" height="30">
@@ -34,6 +35,27 @@
 
 <p>Welcome to Eon's blog!</p>
 
+<div id="tag-cloud-canvas">
+ <canvas width="300" height="300" id="myCanvas">
+  <p>In Internet Explorer versions up to 8, things inside the canvas are inaccessible!</p>
+ </canvas>
+</div>
+
+<div id="tag-cloud">
+ <ul>
+  
+  <li><a href="./tags/boostpy.html">boostpy</a></li>
+  
+  <li><a href="./tags/cpp.html">cpp</a></li>
+  
+  <li><a href="./tags/gil.html">gil</a></li>
+  
+  <li><a href="./tags/pybind11.html">pybind11</a></li>
+  
+  <li><a href="./tags/python.html">python</a></li>
+  
+ </ul>
+</div>
 <p>This is my personal blog, my posts:</p>
 
 <h2>Posts</h2>
@@ -47,6 +69,18 @@
 
 
 <p>…or you can find more in the <a href="./archive.html">archives</a>.</p>
+
+
+<script type="text/javascript">
+  window.onload = function() {
+    try {
+      TagCanvas.Start('myCanvas', 'tag-cloud', {textColour: '#ffffff'});
+    } catch(e) {
+      // something went wrong, hide the canvas container
+      document.getElementById('tag-cloud-canvas').style.display = 'none';
+    }
+  };
+</script>
 
         </div>
         <div class="footer">
