@@ -1,41 +1,40 @@
-var database = firebase.database();
 
 var visitorData = {}
-var updateData = {}
+
+getVisitorData()
 
 function getCount(name){
- if(updateData[name] === undefined){
-    getVisitorData(name)
- }
- ret = visitorData[name]
+  ret = visitorData.attributes[name]
   if(ret===undefined){
     return 0;
   }
   return ret;
 }
 
-function getVisitorData(region) {
-  const dbRef = database.ref('/visitor/'+region);
-  dbRef.get().then((snapshot) => {
-    if (snapshot.exists()) {
-      count = snapshot.val()["count"];
-      visitorData[region] = count
-    }else{
-      visitorData[region] = 0
+function getVisitorData() {
+  const query = new AV.Query('Visitor');
+  query.find().then((visitors) => {
+    if(visitors.length > 0){
+      visitorData = visitors[0]
     }
-    updateData[region] = true
-  }).catch((error) => {
-    console.error(error);
   });
 }
 
 function updateVisitorData(region) {
   let count = getCount(region)
-  if(count !== 0){
-    database.ref('/visitor/'+region).set({
-      count: count+1
-    });
-  }
+  const query = new AV.Query('Visitor');
+  query.find().then((visitors) => {
+    let visitor;
+    if(visitors.length === 0){
+      Visitor = AV.Object.extend('Visitor');
+      visitor = new Visitor()
+    }else{
+      visitor = visitors[0]
+    }
+    console.log("insert : ", region)
+    visitor.set(region, count+1)
+    visitor.save()
+  })
 }
 
 var isoCountries = {
