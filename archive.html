@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="./css/zenburn.css" />
         <link rel="stylesheet" href="./css/table.css" />
         <link rel="stylesheet" href="./css/leaflet.css" />
+        <link rel="stylesheet" href="./css/search.css" />
 
 
         <style type="text/css">
@@ -26,6 +27,7 @@
         </style>
 
         <script src="./js/tagcanvas.min.js"></script>
+        <script src="./js/elasticlunr.min.js"></script>
         <script src="./js/av-min.js"></script>
         <script>
           AV.init({
@@ -53,6 +55,22 @@
       </div>
 </aside>
 <article>
+    
+    <div class="searchBox">
+        <input class="searchInput" type="text" name placeholder="Search">
+        <button class="searchButton" href="#">
+            <i class="material-icons">
+                search
+            </i>
+        </button>
+    </div>
+
+  <div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content" id="style-1">
+  </div>
+
+</div>
     <div class="wrapper" id="style-1">
         <div class="content" id="container">
             
@@ -73,5 +91,84 @@ Here you can find all my previous posts:
         </div>
     </div>
 </article>
+<script src="./js/search.js"></script>
+<script>
+
+function Uint8ArrayToString(fileData){
+  var dataString = "";
+  for (var i = 0; i < fileData.length; i++) {
+    dataString += String.fromCharCode(fileData[i]);
+  }
+ 
+  return dataString
+
+}
+
+var index = elasticlunr(function () {
+  this.addField('title');
+  this.addField('body');
+  this.setRef('title');
+});
+
+
+var post_names = []
+
+function search(ptn){
+    resl = index.search(ptn,{
+    fields: {
+        title: {boost: 2},
+        body: {boost: 1}
+    },
+        boolean: "OR"}
+      )
+    ret = []
+    for(let res of resl){
+        title = res.doc.title
+        body = res.doc.body
+        urlref = res.doc.urlref
+        bdl = body.matchAll(ptn)
+        bdlms = []
+        for (match of bdl){
+            let l=match.index,r=match.index;
+            if(match.index>20){
+                l=match.index-20
+            }
+            if (match.index<body.length-20){
+                r = match.index+20
+              }
+            bdlms.push("..."+body.slice(l,r)+"...<br/>")
+        }
+        ret.push({title: title, res: bdlms, urlref: urlref})
+      }
+    return ret
+}
+
+function parseHtml(value){
+    const patt = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script\s*>/gi
+    value =  value.replace(patt, '')
+    var parser = new DOMParser();
+    var htmlDoc = parser.parseFromString(value, 'text/html');
+    return [htmlDoc.getElementsByTagName("title")[0].textContent, htmlDoc.getElementsByTagName('body')[0].textContent]
+}
+
+
+post_names.push('2021-08-15-python-with-cpp')
+
+for(let name of post_names){
+  fetch('/posts/'+name+'.html') 
+      .then(response => {
+          const reader = response.body.getReader();
+          return reader.read().then(({ done, value }) => {
+                value = parseHtml(Uint8ArrayToString(value))
+                index.addDoc({"title": value[0], "urlref": name, "body": value[1]})
+            })
+
+        })
+      .then(data => {}
+  )
+}
+
+
+  </script>
 </body>
 </html>
