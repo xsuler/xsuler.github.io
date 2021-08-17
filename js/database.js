@@ -24,18 +24,19 @@ function getVisitorData() {
 }
 
 function updateVisitorData(region) {
-  let count = getCount(region)
   const query = new AV.Query('Visitor');
   query.find().then((visitors) => {
     let visitor;
     if(visitors.length === 0){
       Visitor = AV.Object.extend('Visitor');
       visitor = new Visitor()
+      count = 1
     }else{
       visitor = visitors[0]
+      count = visitor.attributes[region]+1
     }
     console.log("insert : ", region)
-    visitor.set(region, count+1)
+    visitor.set(region, count)
     visitor.save()
   })
 }
