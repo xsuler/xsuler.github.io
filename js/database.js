@@ -1,10 +1,10 @@
 
-var visitorData = {}
+var visitorData = undefined
 
 getVisitorData()
 
 function getCount(name){
-  if(visitorData == {}){
+  if(visitorData == undefined){
     return 0
   }
   ret = visitorData.attributes[name]
