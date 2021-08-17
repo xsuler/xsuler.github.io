@@ -4,6 +4,9 @@ var visitorData = {}
 getVisitorData()
 
 function getCount(name){
+  if(visitorData == {}){
+    return 0
+  }
   ret = visitorData.attributes[name]
   if(ret===undefined){
     return 0;
